@@ -1,5 +1,6 @@
 package cn.com.roomdemoforjava;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,34 +43,8 @@ public class FirstFragment extends Fragment {
         binding.btnQueryCheckUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Observable.create(new ObservableOnSubscribe<Boolean>() {
+              Cursor cursor =   DaoTool.listHuman(1);
 
-                    @Override
-                    public void subscribe(ObservableEmitter<Boolean> emitter) throws Exception {
-                        Log.e("TAG","Size:"+AppDataBase.getInstance(requireContext()).daoTool().queryPerson("马").size());
-                        emitter.onNext(true);
-                    }
-                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Boolean>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Boolean aBoolean) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e("TAG", Objects.requireNonNull(e.getMessage()));
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
             }
         });
 

@@ -27,6 +27,7 @@ public abstract class AppDataBase extends RoomDatabase {
                 if (mAppDatabase == null) {
                     mAppDatabase = Room.databaseBuilder(context.getApplicationContext(), AppDataBase.class, "di_health.db")
                             .addMigrations(MIGRATION_1_2)
+                            .allowMainThreadQueries()
                             .build();
                 }
             }
