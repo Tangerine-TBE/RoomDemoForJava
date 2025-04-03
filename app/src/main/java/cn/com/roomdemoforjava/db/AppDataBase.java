@@ -12,8 +12,6 @@ import cn.com.roomdemoforjava.dbBean.Checkup;
 import cn.com.roomdemoforjava.dbBean.Doctor;
 import cn.com.roomdemoforjava.dbBean.Person;
 import cn.com.roomdemoforjava.dbBean.Report;
-import io.reactivex.Observable;
-import io.reactivex.ObservableOnSubscribe;
 
 
 @Database(entities = {Checkup.class, Person.class, Doctor.class, Report.class}, version = 3)
@@ -43,5 +41,5 @@ public abstract class AppDataBase extends RoomDatabase {
             database.execSQL("ALTER TABLE CHECKUP ADD COLUMN FUN TEXT");
         }
     };
-    public abstract DaoTool daoTool();
+   public   abstract DaoLinker daoLinker();
 }
